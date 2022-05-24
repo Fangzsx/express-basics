@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.use(express.urlencoded({extended : false }))
+router.use(express.json());
 
 const items = [
    { itemName : 'phone', price : 200 },
