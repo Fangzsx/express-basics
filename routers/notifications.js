@@ -13,9 +13,18 @@ const notificationDB = [
 ]
 
 router.post('/', (req, res) => {
-    console.log(req.body);
-    res.status(201).send('post notifications');
-})
+    const {authorization} = req.headers;
+    if(authorization && authorization === '123'){
+        const notification = req.body
+        console.log(notificationDB);
+        notificationDB.push(notification);
+        res.status(201).send(notification);
+    }else{
+        res.status(403).send('Forbidden');
+    }
+
+
+});
 
 router.get('/', (req, res) => {
     res.send(notificationDB);
